@@ -1,23 +1,19 @@
-import Building from './Building.js';
+export default class Building {
+  constructor(sqft) {
+    if (this.constructor !== Building && this.evacuationWarningMessage === undefined) {
+      throw new Error('Class extending Building must override evacuationWarningMessage');
+    }
+    this.sqft = sqft;
+  }
 
-export default class ResidentialBuilding extends Building {
-constructor(sqft, numOfApartments) {
-super(sqft);
-this.numOfApartments = numOfApartments;
-}
+  get sqft() {
+    return this._sqft;
+  }
 
-get numOfApartments() {
-return this._numOfApartments;
-}
-
-set numOfApartments(value) {
-if (typeof value !== 'number') {
-throw new TypeError('numOfApartments must be a number');
-}
-this._numOfApartments = value;
-}
-
-evacuationWarningMessage() {
-return 'Evacuate the Residential Building immediately!';
-}
+  set sqft(value) {
+    if (typeof value !== 'number') {
+      throw new TypeError('sqft must be a number');
+    }
+    this._sqft = value;
+  }
 }
