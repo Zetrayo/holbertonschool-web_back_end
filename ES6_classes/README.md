@@ -1,4 +1,4 @@
-# HOLBERTONSCHOOL web_back_end
+# HOLBERTONSCHOOL ES6_classes
 
 This repository is dedicated to the study of coding
 languages through Holbertonschool
