@@ -21,8 +21,6 @@ async def task_wait_n(n: int, max_delay: int):
     Returns:
     List[float]: A list of delays for each completed task.
     """
-    tasks = []
-    for _ in range(n):
-        tasks.append(task_wait_random(max_delay))
+    tasks = [task_wait_random(max_delay) for _ in range(n)]
     delays = await asyncio.gather(*tasks)
-    return delays
+    return sorted(delays)
