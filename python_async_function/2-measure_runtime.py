@@ -1,9 +1,14 @@
 #!/usr/bin/python3
+"""yes"""
+
+
 import asyncio
 import time
 from importables import wait_n
 
+
 def measure_time(n: int, max_delay: int) -> float:
+    """yes"""
     start_time = time.time()
     asyncio.run(wait_n(n, max_delay))
     end_time = time.time()

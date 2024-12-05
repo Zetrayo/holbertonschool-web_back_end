@@ -1,6 +1,11 @@
 #!/usr/bin/python3
+"""yes"""
+
+
 import asyncio
 from importables import wait_random
 
+
 def task_wait_random(max_delay: int) -> asyncio.Task:
+    """yes"""
     return asyncio.create_task(wait_random(max_delay))
