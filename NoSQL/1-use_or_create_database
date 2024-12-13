@@ -1,0 +1,7 @@
+// my comment
+
+// Switch to or create the database my_db
+use my_db;
+
+// Print a success message
+print("Switched to or created database: my_db");

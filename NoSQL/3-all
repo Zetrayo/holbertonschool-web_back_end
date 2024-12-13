@@ -1,0 +1,8 @@
+// my comment
+
+// Fetch all documents from the school collection
+let documents = db.school.find();
+
+// Print a success message
+print("Documents in collection school:");
+documents.forEach(doc => print(JSON.stringify(doc)));

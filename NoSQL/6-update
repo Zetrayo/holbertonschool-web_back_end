@@ -1,0 +1,17 @@
+// my comment
+
+// Get the database name from the command line argument
+var dbName = process.argv[2];
+
+// Connect to the MongoDB database
+var db = connect("mongodb://localhost:27017/" + dbName);
+
+// Update documents where the name is "Holberton school"
+// Add the new attribute 'address' with the value "972 Mission street"
+db.school.updateMany(
+    { name: "Holberton school" },
+    { $set: { address: "972 Mission street" } }
+);
+
+// Print a success message
+print("Updated all documents with name 'Holberton school' to add the address.");

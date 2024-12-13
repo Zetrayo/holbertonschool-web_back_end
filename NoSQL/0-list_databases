@@ -1,0 +1,12 @@
+// my comment
+
+// Connect to MongoDB and list databases
+print("Listing all databases:");
+
+// Execute the 'show dbs' command
+dbs = db.adminCommand({ listDatabases: 1 });
+
+// Iterate through and print each database name
+dbs.databases.forEach(function(database) {
+    print("- " + database.name);
+});
