@@ -2,37 +2,46 @@
 
 
 """
-This script provides statistics about Nginx logs stored in a MongoDB collection.
-It displays the total number of logs, counts for each HTTP method, and the number of status checks.
+This script provides statistics about Nginx logs stored in MongoDB.
 """
 
 
 from pymongo import MongoClient
 
-def main():
-    # Connect to MongoDB
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client["logs"]
-    collection = db["nginx"]
 
-    # Count the total number of logs in the collection
+def get_nginx_stats():
+    """
+    Fetches statistics from the 'nginx' collection in the 'logs' database.
+    """
+
+    # Connect to MongoDB client
+    client = MongoClient()
+
+    # Access the 'logs' database and 'nginx' collection
+    db = client.logs
+    collection = db.nginx
+
+    # Get total number of documents (logs)
     total_logs = collection.count_documents({})
 
-    # Print the total number of logs
-    print(f"{total_logs} logs")
-
-    # List of HTTP methods to count
+    # Define the HTTP methods to check
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-    
-    # Print the methods and the number of occurrences
+    method_counts = {}
+
+    # Count the documents for each HTTP method
+    for method in methods:
+        method_counts[method] = collection.count_documents({"method": method})
+
+    # Count the number of GET requests with path = /status
+    status_check = collection.count_documents({"method": "GET", "path": "/status"})
+
+    # Output results in the required format
+    print(f"{total_logs} logs")
     print("Methods:")
     for method in methods:
-        count = collection.count_documents({"method": method})
-        print(f"\tmethod {method}: {count}")
-    
-    # Count the number of logs where method=GET and path=/status
-    status_check = collection.count_documents({"method": "GET", "path": "/status"})
+        print(f"\tmethod {method}: {method_counts[method]}")
     print(f"{status_check} status check")
 
+
 if __name__ == "__main__":
-    main()
+    get_nginx_stats()
