@@ -1,12 +1,6 @@
 // my comment
 
-// Connect to MongoDB and list databases
-print("Listing all databases:");
-
-// Execute the 'show dbs' command
-dbs = db.adminCommand({ listDatabases: 1 });
-
-// Iterate through and print each database name
-dbs.databases.forEach(function(database) {
-    print("- " + database.name);
+// List all databases and their sizes
+db.adminCommand('listDatabases').databases.forEach(function(database) {
+    print(database.name + "\t" + database.sizeOnDisk / 1024 / 1024 / 1024 + "GB");
 });

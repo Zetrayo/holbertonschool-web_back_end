@@ -1,8 +1,4 @@
 // my comment
 
-// Fetch documents with name="Holberton school" from the school collection
-let documents = db.school.find({ name: "Holberton school" });
-
-// Print a success message
-print("Documents with name='Holberton school' in collection school:");
-documents.forEach(doc => print(JSON.stringify(doc)));
+// Find all documents in the 'school' collection where the name is "Holberton school"
+db.school.find({ name: "Holberton school" }).forEach(printjson);

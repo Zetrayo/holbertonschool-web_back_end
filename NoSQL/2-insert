@@ -1,10 +1,4 @@
 // my comment
 
-// Define the document to insert
-let doc = { name: "Holberton school" };
-
-// Insert the document into the school collection
-db.school.insertOne(doc);
-
-// Print a success message
-print("Document inserted into collection school:", JSON.stringify(doc));
+// Insert a document with the name attribute set to "Holberton school" in the 'school' collection
+db.school.insertOne({ name: "Holberton school" });

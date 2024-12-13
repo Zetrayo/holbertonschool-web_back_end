@@ -1,7 +1,4 @@
 // my comment
 
-// Switch to or create the database my_db
+// Switch to the database 'my_db'. If it doesn't exist, it will be created when you insert data.
 use my_db;
-
-// Print a success message
-print("Switched to or created database: my_db");
