@@ -1,13 +1,4 @@
 // my comment
 
-// Get the database name from the command line argument
-var dbName = process.argv[2];
-
-// Connect to the MongoDB database
-var db = connect("mongodb://localhost:27017/" + dbName);
-
 // Delete all documents with name "Holberton school" in the 'school' collection
 db.school.deleteMany({ name: "Holberton school" });
-
-// Print a success message
-print("Deleted all documents with name 'Holberton school' from the 'school' collection.");

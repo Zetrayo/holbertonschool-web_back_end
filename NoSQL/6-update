@@ -1,7 +1,4 @@
 // my comment
 
-// Delete all documents where the name is "Holberton school"
-let result = db.school.deleteMany({ name: "Holberton school" });
-
-// Print the result to show the number of documents deleted
-printjson(result);
+// Update document with new information
+db.school.update({ name : "Holberton school"}, {$set: { address : "972 Mission street"}}, { multi:true })

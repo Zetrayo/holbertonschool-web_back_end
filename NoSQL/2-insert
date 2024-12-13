@@ -1,4 +1,4 @@
 // my comment
 
 // Insert a document with the name attribute set to "Holberton school" in the 'school' collection
-db.school.insertOne({ name: "Holberton school" });
+db.school.insert({name: "Holberton school"});
